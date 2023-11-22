@@ -12,7 +12,6 @@ let jobs = [
 	{ id: nanoid(), company: "google", position: "back-end" },
 ];
 
-app.use();
 app.use("/api/v1/jobs", JobRouter);
 
 app.get("/api/v1/jobs", (req, res) => {

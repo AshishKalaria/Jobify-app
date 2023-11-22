@@ -58,10 +58,3 @@ export const deleteJob = async (req, res) => {
 
 	res.status(200).json({ msg: "job deleted" });
 };
-module.exports = {
-	getAllJobs,
-	getJob,
-	createJob,
-	updateJob,
-	deleteJob,
-};
