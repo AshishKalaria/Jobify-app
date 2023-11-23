@@ -25,13 +25,12 @@ app.get("/", (req, res) => {
 	res.send("Hello World");
 });
 
-app.post("api/v1/test", validateJobInput, (req, res) => {
-	const { name } = req.body;
-
-	res.json({ message: `hello ${name}` });
+app.get("/api/v1/test", (req, res) => {
+	res.json({ msg: "test route" });
 });
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
+app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use("*", (req, res) => {
