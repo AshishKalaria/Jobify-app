@@ -1,22 +1,37 @@
-import express from "express";
-import morgan from "morgan";
 import * as dotenv from "dotenv";
+dotenv.config();
+import express from "express";
+const app = express();
+import morgan from "morgan";
 import mongoose from "mongoose";
 import "express-async-errors";
 import cookieParser from "cookie-parser";
+import cloudinary from "cloudinary";
+
 import jobRouter from "./routes/jobRouter.js";
 import authRouter from "./routes/authRouter.js";
 import userRouter from "./routes/userRouter.js";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import { authenticateUser } from "./middleware/authMiddleware.js";
-dotenv.config();
-const app = express();
+
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
 const port = process.env.PORT || 5100;
+
+cloudinary.config({
+	cloud_name: process.env.CLOUD_NAME,
+	api_key: process.env.CLOUD_API_KEY,
+	api_secret: process.env.CLOUD_API_SECRET,
+});
+//needed for es6 modules
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 if (process.env.NODE_ENV === "development") {
 	app.use(morgan("dev"));
 }
 
+app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(cookieParser());
 app.use(express.json());
 

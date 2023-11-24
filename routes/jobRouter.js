@@ -8,6 +8,7 @@ import {
 	deleteJob,
 	showStats,
 } from "../controllers/jobController.js";
+import { checkForTestUser } from "../middleware/authMiddleware.js";
 import {
 	validateJobInput,
 	validateIdParam,
@@ -18,7 +19,7 @@ router.route("/stats").get(showStats);
 router
 	.route("/:id")
 	.get(validateIdParam, getJob)
-	.patch(validateJobInput, validateIdParam, updateJob)
-	.delete(validateIdParam, deleteJob);
+	.patch(checkForTestUser, validateJobInput, validateIdParam, updateJob)
+	.delete(checkForTestUser, validateIdParam, deleteJob);
 
 export default router;
