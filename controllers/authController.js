@@ -22,10 +22,10 @@ export const login = async (req, res) => {
 	if (!isValidUser) throw new UnauthenticatedError("invalid credentials");
 	const token = createJWT({ userId: user._id, role: user.role });
 	console.log(token);
-	const oneDay = 1000 * 60 * 60 * 24;
+	const oneYear = 1000 * 60 * 60 * 24 * 365;
 	res.cookie("token", token, {
 		httpOnly: true,
-		expires: new Date(Date.now() + oneDay),
+		expires: new Date(Date.now() + oneYear),
 		secure: process.env.NODE_ENV === "production",
 	});
 	res.status(StatusCodes.CREATED).json({ msg: "user logged in" });
