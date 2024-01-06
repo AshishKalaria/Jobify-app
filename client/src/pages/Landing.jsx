@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import Wrapper from "../assets/wrappers/LandingPage";
 import main from "../assets/images/main.svg";
 import { Link } from "react-router-dom";
@@ -16,10 +15,10 @@ const Landing = () => {
 						job <span>tracking</span> app
 					</h1>
 					<p>
-						I'm baby wayfarers hoodie next level taiyaki brooklyn cliche blue
-						bottle single-origin coffee chia. Aesthetic post-ironic venmo,
-						quinoa lo-fi tote bag adaptogen everyday carry meggings +1 brunch
-						narwhal.
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+						reiciendis neque, incidunt veritatis facilis recusandae quam. Facere
+						maxime animi est, aut dolore vero rerum eos officia iure, nostrum id
+						possimus.
 					</p>
 					<Link to="/register" className="btn register-link">
 						Register
